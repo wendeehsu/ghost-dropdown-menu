@@ -53,7 +53,7 @@ This header template is shared across all the pages.
                 {{#foreach tags}}
                 <div class="dropdown">
                   <button class="dropbtn" onclick="showDropdown('{{name}}')">{{ name }} 
-                    <span class="icon-chevron-down" aria-hidden="true"></span>
+                    <span class="icon-chevron-down" style="font-size: 1rem;position: relative; top: 3px;" aria-hidden="true"></span>
                   </button>
                   <div class="dropdown-content" id="tag-content-{{name}}">
                     {{#get "posts" filter="tags:{{name}}" order="published_at desc"}}
