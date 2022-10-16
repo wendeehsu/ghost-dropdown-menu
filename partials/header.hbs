@@ -51,14 +51,18 @@ This header template is shared across all the pages.
               {{/if}}
               {{#get 'tags' limit='all' include='count.posts' order='count.posts desc'}}
                 {{#foreach tags}}
-                  <li class="more">
-                    <span>
-                      <a href='{{ url }}'>
-                        {{ name }}
-                        <span class="icon-chevron-down" aria-hidden="true"></span>
-                      </a>
-                    </span>
-                  </li>
+                <div class="dropdown">
+                  <button class="dropbtn" onclick="showDropdown('{{name}}')">{{ name }} 
+                    <span class="icon-chevron-down" aria-hidden="true"></span>
+                  </button>
+                  <div class="dropdown-content" id="tag-content-{{name}}">
+                    {{#get "posts" filter="tags:{{name}}" order="published_at desc"}}
+                        {{#foreach posts}}
+                          <a>{{title}}</a>
+                        {{/foreach}}
+                    {{/get}}
+                  </div>
+                </div> 
                 {{/foreach}}
               {{/get}}
               {{!-- {{#if @site.navigation}}
@@ -154,4 +158,27 @@ This header template is shared across all the pages.
       {{navigation type="secondary"}}
     </div>
   {{/if}}
+  <script>
+    function showDropdown(name) {
+      console.log(name);
+      const dropdowns = document.querySelectorAll(`[id^="tag-content"]`);
+      for (var i = 0; i < dropdowns.length; i++) {
+        dropdowns[i].classList.remove('show');
+      }
+      document.getElementById("tag-content-"+name).classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+  </script>
 </header>
