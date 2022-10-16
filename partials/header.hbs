@@ -49,7 +49,7 @@ This header template is shared across all the pages.
                   </a>
                 </li>
               {{/if}}
-              {{#get 'tags' limit='all' include='count.posts' order='count.posts desc'}}
+              {{#get 'tags' limit='all'}}
                 {{#foreach tags}}
                 <div class="dropdown">
                   <button class="dropbtn" onclick="showDropdown('{{name}}')">{{ name }} 
@@ -58,7 +58,7 @@ This header template is shared across all the pages.
                   <div class="dropdown-content" id="tag-content-{{name}}">
                     {{#get "posts" filter="tags:{{name}}" order="published_at desc"}}
                         {{#foreach posts}}
-                          <a>{{title}}</a>
+                          <a href="{{url}}">{{title}}</a>
                         {{/foreach}}
                     {{/get}}
                   </div>
