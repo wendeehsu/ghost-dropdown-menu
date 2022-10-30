@@ -49,25 +49,57 @@ This header template is shared across all the pages.
                   </a>
                 </li>
               {{/if}}
-              {{#get 'tags' limit='all'}}
-                {{#foreach tags}}
-                <div class="dropdown">
-                  <button class="dropbtn" onclick="showDropdown('{{name}}')">{{ name }} 
-                    <span class="icon-chevron-down" style="font-size: 1rem;position: relative; top: 3px;" aria-hidden="true"></span>
-                  </button>
-                  <div class="dropdown-content" id="tag-content-{{name}}">
-                    {{#get "posts" filter="tags:{{name}}" order="published_at desc"}}
-                        {{#foreach posts}}
-                          <a href="{{url}}">{{title}}</a>
-                        {{/foreach}}
-                    {{/get}}
-                  </div>
-                </div> 
-                {{/foreach}}
-              {{/get}}
-              {{!-- {{#if @site.navigation}}
+              <div class="dropdown">
+                <button class="dropbtn" onclick="showDropdown('intrepidusAD')">Intrepidus AD 
+                  <span class="icon-chevron-down" style="font-size: 1rem;position: relative; top: 3px;" aria-hidden="true"></span>
+                </button>
+                <div class="dropdown-content" id="tag-content-intrepidusAD">
+                  {{#get "posts" filter="tags:intrepidusAD" order="published_at desc"}}
+                      {{#foreach posts}}
+                        <a href="{{url}}">{{title}}</a>
+                      {{/foreach}}
+                  {{/get}}
+                </div>
+              </div>
+              <div class="dropdown">
+                <button class="dropbtn" onclick="showDropdown('meditations')">Meditations 
+                  <span class="icon-chevron-down" style="font-size: 1rem;position: relative; top: 3px;" aria-hidden="true"></span>
+                </button>
+                <div class="dropdown-content" id="tag-content-meditations">
+                  {{#get "posts" filter="tags:meditations" order="published_at desc"}}
+                      {{#foreach posts}}
+                        <a href="{{url}}">{{title}}</a>
+                      {{/foreach}}
+                  {{/get}}
+                </div>
+              </div>
+              <div class="dropdown">
+                <button class="dropbtn" onclick="showDropdown('business')">Business 
+                  <span class="icon-chevron-down" style="font-size: 1rem;position: relative; top: 3px;" aria-hidden="true"></span>
+                </button>
+                <div class="dropdown-content" id="tag-content-business">
+                  {{#get "posts" filter="tags:business" order="published_at desc"}}
+                      {{#foreach posts}}
+                        <a href="{{url}}">{{title}}</a>
+                      {{/foreach}}
+                  {{/get}}
+                </div>
+              </div>
+              <div class="dropdown">
+                <button class="dropbtn" onclick="showDropdown('relationships')">Relationships 
+                  <span class="icon-chevron-down" style="font-size: 1rem;position: relative; top: 3px;" aria-hidden="true"></span>
+                </button>
+                <div class="dropdown-content" id="tag-content-relationships">
+                  {{#get "posts" filter="tags:relationships" order="published_at desc"}}
+                      {{#foreach posts}}
+                        <a href="{{url}}">{{title}}</a>
+                      {{/foreach}}
+                  {{/get}}
+                </div>
+              </div>
+              {{#if @site.navigation}}
                 {{navigation}}
-              {{/if}} --}}
+              {{/if}}
               {{#if @site.secondary_navigation}}
                 <li class="more">
                   <span>
